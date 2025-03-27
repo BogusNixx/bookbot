@@ -1,6 +1,6 @@
 def word_count(text):
         num_words = len(text.split())
-        print(f"{num_words} words found in the document")
+        return num_words
 
 def char_count(text):
         dictionary = {}
@@ -9,9 +9,14 @@ def char_count(text):
         return dictionary
 
 def sorted_char_count(character_count):
-        highest_so_far = float("inf")
         sorted_list = []
-        for key, value in character_count:
-                if value < highest_so_far:
-                        sorted_list.append(key, value)
-        print(sorted_list)
+        for char, count in character_count.items():
+                if char.isalpha():
+                        char_dict = {"char": char, "count": count}
+                        sorted_list.append(char_dict)
+
+        def sort_on(dict):
+                return dict["count"]
+        
+        sorted_list.sort(reverse=True, key=sort_on)
+        return sorted_list
