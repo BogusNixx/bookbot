@@ -1,7 +1,17 @@
-def word_count(path_to_file):
-    num_words = 0
-    with open(path_to_file) as f:
-        file_contents = f.read()
-        words = file_contents.split()
-        num_words = len(words)
-    return (f"{num_words} words found in the document")
+def word_count(text):
+        num_words = len(text.split())
+        print(f"{num_words} words found in the document")
+
+def char_count(text):
+        dictionary = {}
+        for char in text.lower():
+                dictionary[char] = dictionary.get(char, 0) + 1
+        return dictionary
+
+def sorted_char_count(character_count):
+        highest_so_far = float("inf")
+        sorted_list = []
+        for key, value in character_count:
+                if value < highest_so_far:
+                        sorted_list.append(key, value)
+        print(sorted_list)
